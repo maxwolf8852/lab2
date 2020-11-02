@@ -1,5 +1,1 @@
-﻿  lab2.c
-D:\Proj\lab2\lab2\lab2.c(33,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Proj\lab2\lab2\lab2.c(81,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Proj\lab2\lab2\lab2.c(29): warning C4715: let_num: значение возвращается не при всех путях выполнения
-  lab2.vcxproj -> D:\Proj\lab2\Debug\lab2.exe
+﻿  lab2.vcxproj -> D:\Proj\lab2\Debug\lab2.exe
