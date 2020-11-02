@@ -47,7 +47,7 @@ inline int let_num(char letter) {
 }
 
 int convert(char* string) {
-	unsigned int result = 0;
+	register unsigned int result = 0;
 	for (int i = 0; i < strlen(string); i++) {
 		result *= 10;
 		result += let_num(string[i]);
@@ -84,17 +84,17 @@ bool do_puzzle(int remain, int argc, char* argv[], struct vector* temp) {
 void parse_line(int argc, char* argv[]) {
 	int z = argc / 2 - 2;
 	int len_end = strlen(*(argv + argc - 1));
-	for (int i = 1; i < argc; i += 2) {
-		int len;
-		if (i != argc - 1) {
-			len = strlen(*(argv + i));
-			if (len >= len_end)
-				evr1 = false;
-		}
-		else  len = len_end;
+	for (int i = 1; i < argc - 1; i += 2) {
+		int len = strlen(*(argv + i));
+		if (len >= len_end)
+			evr1 = false;
+
 		for (int j = 0; j < len; j++)
-			arr = setL(arr, *(*(argv + i) + j), j == 0, (i == argc - 1 && j == 0) ? z : 0);
+			arr = setL(arr, *(*(argv + i) + j), j == 0, 0);
 	}
+
+	for (int j = 0; j < len_end; j++)
+		arr = setL(arr, *(*(argv + argc - 1) + j), j == 0, (j == 0) ? z : 0);
 }
 
 int main(int argc, char* argv[])
@@ -105,6 +105,6 @@ int main(int argc, char* argv[])
 	struct vector* temp = arr;
 	if (!do_puzzle(0b1111111111, argc, argv, temp)) printf("Something went wrong!");
 
-	printf("\n%.3f\n", (clock() - start_time) / 1000.0f);
+	printf("\n%.3f", (clock() - start_time) / 1000.0f);
 	return 0;
 }
